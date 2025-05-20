@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png"  href="x3ifavicon.png">
+    <title>Cool Tools</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+    <div class="wrapper">
+        <div class="top-bar">
+            <div class="tool-selector">
+                <button class="tool-button active" onclick="selectTool('rangeFinder', this)">Range Finder</button>
+                <button class="tool-button" onclick="selectTool('numberCleaner', this)">Number Cleaner</button>
+                <button class="tool-button" onclick="selectTool('addOne', this)">Add 1 to Numbers</button>
+                <button class="tool-button" onclick="selectTool('removeOne', this)">Remove 1 from Numbers</button>
+                <button class="tool-button" onclick="selectTool('commaSeparated', this)">Comma Separator</button>
+                <button class="tool-button table" onclick="showContent()">Case Validation tool</button>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h1 id="toolTitle">Telephone Number Tools</h1>
+            <div id="toolDescription"></div>
+    
+            <div id="rangeFinder">
+                <div class="scenario-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="findRangeToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <span>Find Range</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="extendRangeToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span>Extend Range</span>
+                </div>
+                <div id="findRangeContent">
+                    <textarea id="multipleNumbers" placeholder="Enter 10-digit telephone numbers (one per line or space-separated)"></textarea>
+                </div>
+                <div id="extendRangeContent" style="display: none;">
+                    <div id="itemsContainer"></div>
+                    <button class="action-button" id="addItemBtn">+ Add Item</button>
+                </div>
+                
+            </div>
+    
+            <div id="otherTools" style="display:none;">
+                <textarea id="input" placeholder="Enter telephone numbers (one per line or space-separated)"></textarea>
+            </div>
+    
+            <div class="button-container">
+        <button class="action-button" id="submitBtn" onclick="processNumbers()">Submit</button>
+        <button class="action-button" id="exportBtn" onclick="exportResults()">Export Results</button>
+        <button class="action-button" id="reset" onclick="resetTool()">Reset</button>
+        <button class="action-button" id="copyResults" onclick="copyResults()">Copy</button>
+            </div>
+            <div class="wave-container">
+            <div class="sp-wave"></div>
+        </div>
+            <div id="results" ></div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- TN Validation Tool -->
+
+
+    <div class="table hidden" id="container">
+        <h1>Case Validation Tool</h1>
+        <div class="input-group">
+            <label for="salesforceTNs">Salesforce Case Numbers:</label>
+            <textarea id="salesforceTNs" placeholder="Enter 10 digit Telephone Numbers"></textarea>
+            <div id="salesforceTNCount" class="tn-count">TN Count: 0</div>
+        </div>
+        <div class="input-group">
+            <label for="loaTNs">X3i Case Numbers:</label>
+            <textarea id="loaTNs" placeholder="Enter 10 digit Telephone Numbers"></textarea>
+            <div id="loaTNCount" class="tn-count">TN Count: 0</div>
+        </div>
+        <div class="button-group">
+            <button id="submitBttn">Submit</button>
+            <button id="resetBtn">Reset</button>
+            <button id="copyBtn">Copy</button>
+        </div>
+        <div id="output" >
+            <h2>Results:</h2>
+            <table id="resultTable">
+                <thead>
+                    <tr>
+                        <th>Duplicates TNs</th>
+                        <th>Matching TNs</th>
+                        <th>MisMatched TNs</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="duplicatesTNs" class="number-list"></td>
+                        <td id="matchingTNs" class="number-list"></td>
+                        <td id="mismatchedTNs" class="number-list"></td>
+                        <td id="remarks"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="copyFeedback">Results Copied</div>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
